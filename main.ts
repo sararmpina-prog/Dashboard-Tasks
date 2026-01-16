@@ -1,6 +1,5 @@
 
 
-// Exer1: Cria uma interface chamada Tarefa que defina a estrutura de um objeto de tarefa
 
 interface TarefaInterface {
     id: number;
@@ -8,8 +7,6 @@ interface TarefaInterface {
     concluida: boolean; 
 }
 
-
-// Exerc2: Cria uma classe TarefaClass que implemente a interface Tarefa.
 
 
 class Tarefa implements TarefaInterface {
@@ -39,7 +36,6 @@ class Tarefa implements TarefaInterface {
     }
 }
 
-// Exerc3: Cria um array chamado listaTarefas que armazene vários objetos do tipo Tarefa.
 
 
 let irCompras = new Tarefa (1, "ir às compras")
