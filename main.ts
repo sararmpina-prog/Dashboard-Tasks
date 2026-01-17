@@ -269,5 +269,7 @@ function filterCompletedTasks() {
     
     let listaTarefasPorFazer = listaTarefas.filter(tarefa => tarefa.concluida == false); 
 
-    renderTasks(listaTarefasPorFazer); 
+    listaTarefas = listaTarefasPorFazer
+
+    renderTasks(listaTarefas); 
 }
