@@ -62,3 +62,21 @@ button {
   border-radius: 999px; /* pill */
   vertical-align: middle;
 }
+
+.personal {
+  border: 2px solid lightblue;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.work {
+  border: 2px solid green;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.studies {
+  border: 2px solid purple;
+  padding: 5px;
+  border-radius: 10px;
+}

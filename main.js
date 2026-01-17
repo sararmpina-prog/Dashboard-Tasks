@@ -1,8 +1,9 @@
 var Tarefa = /** @class */ (function () {
-    function Tarefa(id, titulo) {
+    function Tarefa(id, titulo, categoria) {
         this.concluida = false;
         this.id = id;
         this.titulo = titulo;
+        this.categoria = categoria;
     }
     Tarefa.prototype.marcarConcluida = function () {
         this.concluida = true;
@@ -19,8 +20,8 @@ var Tarefa = /** @class */ (function () {
     };
     return Tarefa;
 }());
-var irCompras = new Tarefa(1, "Ir às compras");
-var estudar = new Tarefa(2, "Estudar programação");
+var irCompras = new Tarefa(1, "Ir às compras", "Personal");
+var estudar = new Tarefa(2, "Estudar programação", "Studies");
 var listaTarefas = [irCompras, estudar];
 var inputTarefa = document.getElementById("addTarefa");
 renderTasks(listaTarefas);
@@ -35,6 +36,15 @@ function createSingleTask(task) {
         elemLista.classList.add("riscarTarefa");
         var dataConclusao = task.marcarConcluida();
         elemLista.textContent = task.titulo + " " + String(dataConclusao);
+    }
+    if (task.categoria == "Personal") {
+        elemLista.classList.add("personal");
+    }
+    if (task.categoria == "Studies") {
+        elemLista.classList.add("studies");
+    }
+    if (task.categoria == "Work") {
+        elemLista.classList.add("work");
     }
     elemLista.appendChild(createBtnRemove(task));
     elemLista.appendChild(createBtnEdit(elemLista, task));
@@ -115,15 +125,12 @@ function createBtnAddTask() {
 }
 function addToTaskList() {
     var tarefaIntroduzida = inputTarefa.value;
-    var span = document.getElementById("asterisco");
+    var category = document.getElementById("categories");
     if (tarefaIntroduzida) {
-        var novaTarefa = new Tarefa(Date.now(), tarefaIntroduzida);
+        var novaTarefa = new Tarefa(Date.now(), tarefaIntroduzida, category.value);
         listaTarefas.push(novaTarefa);
     }
-    // } else {
-    //     inputTarefa.setAttribute("placeholder","You haven't introduced a task" )  
-    //     span.classList.add("displaySpan"); 
-    // }
+    console.log(listaTarefas);
     inputTarefa.value = "";
     renderTasks(listaTarefas);
 }

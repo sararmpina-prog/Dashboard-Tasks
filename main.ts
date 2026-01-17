@@ -1,4 +1,4 @@
-
+type Categoria = 'Work' | 'Personal' | 'Studies'; 
 
 interface TarefaInterface {
     id: number;
@@ -12,10 +12,12 @@ class Tarefa implements TarefaInterface {
     titulo: string; 
     concluida: boolean = false; 
     dataConclusao?: Date; 
+    categoria: Categoria; 
 
-    constructor (id: number, titulo: string) {
+    constructor (id: number, titulo: string, categoria: Categoria) {
         this.id = id; 
         this.titulo = titulo; 
+        this.categoria = categoria; 
     }
 
     marcarConcluida () {
@@ -36,8 +38,8 @@ class Tarefa implements TarefaInterface {
 
 
 
-let irCompras = new Tarefa (1, "Ir às compras")
-let estudar = new Tarefa (2, "Estudar programação")
+let irCompras = new Tarefa (1, "Ir às compras", "Personal")
+let estudar = new Tarefa (2, "Estudar programação", "Studies")
 
 
 let listaTarefas: Tarefa[] = [irCompras, estudar]; 
@@ -60,6 +62,16 @@ function createSingleTask(task: Tarefa) {
             let dataConclusao = task.marcarConcluida(); 
             elemLista.textContent = task.titulo + " " + String(dataConclusao)
         } 
+
+        if (task.categoria == "Personal") {
+            elemLista.classList.add("personal")
+        }
+        if (task.categoria == "Studies") {
+            elemLista.classList.add("studies")
+        } 
+        if (task.categoria == "Work") {
+            elemLista.classList.add("work")
+        }
 
     elemLista.appendChild(createBtnRemove(task)); 
     elemLista.appendChild(createBtnEdit(elemLista, task)); 
@@ -189,20 +201,20 @@ function createBtnAddTask() {
 
 function addToTaskList () {
     let tarefaIntroduzida: string = inputTarefa.value; 
-    let span = document.getElementById("asterisco") as HTMLSpanElement; 
-    
-    if (tarefaIntroduzida) {
-        let novaTarefa = new Tarefa (Date.now(), tarefaIntroduzida)
+    let category = document.getElementById("categories") as HTMLSelectElement; 
+
+
+    if (tarefaIntroduzida){
+        let novaTarefa = new Tarefa (Date.now(), tarefaIntroduzida, category.value as Categoria)
         listaTarefas.push(novaTarefa); 
     }
-    // } else {
-    //     inputTarefa.setAttribute("placeholder","You haven't introduced a task" )  
-    //     span.classList.add("displaySpan"); 
-    // }
-  
+    
+    console.log(listaTarefas); 
     inputTarefa.value = ""; 
     renderTasks(listaTarefas); 
 }
+
+
 
 
 function contarTarefasNaoCumpridas () {
