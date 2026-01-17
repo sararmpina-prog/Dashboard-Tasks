@@ -1,40 +1,43 @@
-var Tarefa = /** @class */ (function () {
-    function Tarefa(id, titulo, categoria) {
+class Tarefa {
+    constructor(id, titulo, categoria) {
         this.concluida = false;
         this.id = id;
         this.titulo = titulo;
         this.categoria = categoria;
     }
-    Tarefa.prototype.marcarConcluida = function () {
+    marcarConcluida() {
         this.concluida = true;
-        var dataConclusao = new Date();
-        var mesConclusao = dataConclusao.getMonth() + 1;
-        var diaConclusao = dataConclusao.getDate();
-        var horaConclusao = dataConclusao.getHours();
-        var minConclusao = dataConclusao.getMinutes();
-        var stringDataConclusao = "Concluída em: " + String(diaConclusao) + "/" + String(mesConclusao) + " " + String(horaConclusao) + ":" + String(minConclusao);
+        let dataConclusao = new Date();
+        let mesConclusao = dataConclusao.getMonth() + 1;
+        let diaConclusao = dataConclusao.getDate();
+        let horaConclusao = dataConclusao.getHours();
+        let minConclusao = dataConclusao.getMinutes();
+        let stringDataConclusao = "Concluída em: " + String(diaConclusao) + "/" + String(mesConclusao) + " " + String(horaConclusao) + ":" + String(minConclusao);
         return stringDataConclusao;
-    };
-    Tarefa.prototype.marcarNaoConcluida = function () {
+    }
+    marcarNaoConcluida() {
         this.concluida = false;
-    };
-    return Tarefa;
-}());
-var irCompras = new Tarefa(1, "Ir às compras", "Personal");
-var estudar = new Tarefa(2, "Estudar programação", "Studies");
-var listaTarefas = [irCompras, estudar];
-var inputTarefa = document.getElementById("addTarefa");
-renderTasks(listaTarefas);
+    }
+}
+let listaTarefas = [];
+let inputTarefa = document.getElementById("addTarefa");
+let tarefasIniciais = [
+    { id: 1, titulo: "Dormir", categoria: "Personal" },
+    { id: 2, titulo: "Ir ao jantar da Bia", categoria: "Personal" },
+    { id: 3, titulo: "Estudar programação", categoria: "Studies" },
+    { id: 4, titulo: "Trabalho Ética", categoria: "Work" },
+];
+loadInitialTasks();
 createBtnAddTask();
 getBtnSortAToZ();
 createSearchTask();
 createBtnRemovedFinishedTasks();
 function createSingleTask(task) {
-    var elemLista = document.createElement("li");
+    let elemLista = document.createElement("li");
     elemLista.textContent = task.titulo;
     if (task.concluida == true) {
         elemLista.classList.add("riscarTarefa");
-        var dataConclusao = task.marcarConcluida();
+        let dataConclusao = task.marcarConcluida();
         elemLista.textContent = task.titulo + " " + String(dataConclusao);
     }
     if (task.categoria == "Personal") {
@@ -53,32 +56,32 @@ function createSingleTask(task) {
 }
 function renderTasks(list) {
     atualizarBadge();
-    var lista = document.querySelector("#taskList");
+    let lista = document.querySelector("#taskList");
     lista.innerHTML = "";
-    for (var i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         lista.appendChild(createSingleTask(list[i]));
     }
 }
 function createBtnRemove(task) {
-    var btnRemover = document.createElement("button");
+    let btnRemover = document.createElement("button");
     btnRemover.textContent = "Remove";
-    btnRemover.addEventListener("click", function () { return removeTask(task.id); });
+    btnRemover.addEventListener("click", () => removeTask(task.id));
     return btnRemover;
 }
 function removeTask(identificador) {
-    var listaSemTarefa = listaTarefas.filter(function (elemento) { return elemento.id != identificador; });
+    let listaSemTarefa = listaTarefas.filter(elemento => elemento.id != identificador);
     listaTarefas = listaSemTarefa;
     renderTasks(listaTarefas);
 }
 function createBtnToggleCheck(task) {
-    var btnCompleto = document.createElement("button");
+    let btnCompleto = document.createElement("button");
     btnCompleto.textContent = "Toggle Check";
-    btnCompleto.addEventListener("click", function () { return identifyTaskChecked(task.id); });
+    btnCompleto.addEventListener("click", () => identifyTaskChecked(task.id));
     return btnCompleto;
 }
 function identifyTaskChecked(numId) {
-    var arrayTarefasConcluidas = listaTarefas.filter(function (tarefa) { return tarefa.id == numId; });
-    var tarefa = arrayTarefasConcluidas[0];
+    let arrayTarefasConcluidas = listaTarefas.filter(tarefa => tarefa.id == numId);
+    let tarefa = arrayTarefasConcluidas[0];
     if (tarefa.concluida == true) {
         tarefa.concluida = false;
     }
@@ -88,31 +91,31 @@ function identifyTaskChecked(numId) {
     renderTasks(listaTarefas);
 }
 function createBtnEdit(li, task) {
-    var btnEdicao = document.createElement("button");
+    let btnEdicao = document.createElement("button");
     btnEdicao.textContent = "Edit";
-    btnEdicao.addEventListener("click", function () { return addInput(li, task.titulo, task.id); });
+    btnEdicao.addEventListener("click", () => addInput(li, task.titulo, task.id));
     return btnEdicao;
 }
 function addInput(tagLi, title, identificador) {
-    var inputNovaTarefa = document.createElement("input");
+    let inputNovaTarefa = document.createElement("input");
     inputNovaTarefa.setAttribute("placeholder", title);
-    var btnConclusao = document.createElement("button");
+    let btnConclusao = document.createElement("button");
     btnConclusao.textContent = "Update";
     tagLi.innerHTML = "";
     tagLi.appendChild(inputNovaTarefa);
     tagLi.appendChild(btnConclusao);
     tagLi.appendChild(createBtnCancel());
-    btnConclusao.addEventListener("click", function () { return changeTask(inputNovaTarefa, identificador); });
+    btnConclusao.addEventListener("click", () => changeTask(inputNovaTarefa, identificador));
 }
 function createBtnCancel() {
-    var btnCancelar = document.createElement("button");
+    let btnCancelar = document.createElement("button");
     btnCancelar.textContent = "Cancel";
-    btnCancelar.addEventListener("click", function () { return renderTasks(listaTarefas); });
+    btnCancelar.addEventListener("click", () => renderTasks(listaTarefas));
     return btnCancelar;
 }
 function changeTask(tagInput, numId) {
-    var novoTitulo = tagInput.value;
-    var arrayTemporario = listaTarefas.filter(function (objeto) { return objeto.id == numId; });
+    let novoTitulo = tagInput.value;
+    let arrayTemporario = listaTarefas.filter(objeto => objeto.id == numId);
     console.log(arrayTemporario);
     if (novoTitulo) {
         arrayTemporario[0].titulo = novoTitulo;
@@ -120,14 +123,14 @@ function changeTask(tagInput, numId) {
     renderTasks(listaTarefas);
 }
 function createBtnAddTask() {
-    var btnAdd = document.getElementById("addTask");
-    btnAdd.addEventListener("click", function () { return addToTaskList(); });
+    let btnAdd = document.getElementById("addTask");
+    btnAdd.addEventListener("click", () => addToTaskList());
 }
 function addToTaskList() {
-    var tarefaIntroduzida = inputTarefa.value;
-    var category = document.getElementById("categories");
+    let tarefaIntroduzida = inputTarefa.value;
+    let category = document.getElementById("categories");
     if (tarefaIntroduzida) {
-        var novaTarefa = new Tarefa(Date.now(), tarefaIntroduzida, category.value);
+        let novaTarefa = new Tarefa(Date.now(), tarefaIntroduzida, category.value);
         listaTarefas.push(novaTarefa);
     }
     console.log(listaTarefas);
@@ -135,8 +138,8 @@ function addToTaskList() {
     renderTasks(listaTarefas);
 }
 function contarTarefasNaoCumpridas() {
-    var contador = 0;
-    for (var i = 0; i < listaTarefas.length; i++) {
+    let contador = 0;
+    for (let i = 0; i < listaTarefas.length; i++) {
         if (listaTarefas[i].concluida == false) {
             contador = contador + 1;
         }
@@ -144,26 +147,26 @@ function contarTarefasNaoCumpridas() {
     return contador;
 }
 function atualizarBadge() {
-    var valorNovoDoBadge = contarTarefasNaoCumpridas();
-    var span = document.querySelector("#badge");
+    let valorNovoDoBadge = contarTarefasNaoCumpridas();
+    let span = document.querySelector("#badge");
     span.textContent = String(valorNovoDoBadge);
 }
 function getBtnSortAToZ() {
-    var btnSortAToZ = document.getElementById("btnSort");
-    btnSortAToZ.addEventListener("click", function () { return sortAToZ(listaTarefas); });
+    let btnSortAToZ = document.getElementById("btnSort");
+    btnSortAToZ.addEventListener("click", () => sortAToZ(listaTarefas));
 }
 function sortAToZ(array) {
-    listaTarefas = array.sort(function (a, b) { return a.titulo.localeCompare(b.titulo); });
+    listaTarefas = array.sort((a, b) => a.titulo.localeCompare(b.titulo));
     renderTasks(listaTarefas);
 }
 function createSearchTask() {
-    var inputBar = document.getElementById("searchTask");
-    inputBar.addEventListener("input", function () { return filterTask(inputBar.value); });
+    let inputBar = document.getElementById("searchTask");
+    inputBar.addEventListener("input", () => filterTask(inputBar.value));
 }
 function filterTask(searchedWord) {
-    var listaTasksSearched = [];
-    for (var i = 0; i < listaTarefas.length; i++) {
-        var palavraMagica = (listaTarefas[i].titulo).toLowerCase().includes(searchedWord);
+    let listaTasksSearched = [];
+    for (let i = 0; i < listaTarefas.length; i++) {
+        let palavraMagica = (listaTarefas[i].titulo).toLowerCase().includes(searchedWord);
         if (palavraMagica) {
             listaTasksSearched.push(listaTarefas[i]);
         }
@@ -171,11 +174,18 @@ function filterTask(searchedWord) {
     renderTasks(listaTasksSearched);
 }
 function createBtnRemovedFinishedTasks() {
-    var btnRemoveFinishedtasks = document.getElementById("btnRemoveCompletedTasks");
-    btnRemoveFinishedtasks.addEventListener("click", function () { return filterCompletedTasks(); });
+    let btnRemoveFinishedtasks = document.getElementById("btnRemoveCompletedTasks");
+    btnRemoveFinishedtasks.addEventListener("click", () => filterCompletedTasks());
 }
 function filterCompletedTasks() {
-    var listaTarefasPorFazer = listaTarefas.filter(function (tarefa) { return tarefa.concluida == false; });
+    let listaTarefasPorFazer = listaTarefas.filter(tarefa => tarefa.concluida == false);
     listaTarefas = listaTarefasPorFazer;
+    renderTasks(listaTarefas);
+}
+function loadInitialTasks() {
+    for (let i = 0; i < tarefasIniciais.length; i++) {
+        let novaTarefaInicial = new Tarefa(tarefasIniciais[i].id, tarefasIniciais[i].titulo, tarefasIniciais[i].categoria);
+        listaTarefas.push(novaTarefaInicial);
+    }
     renderTasks(listaTarefas);
 }

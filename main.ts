@@ -37,16 +37,19 @@ class Tarefa implements TarefaInterface {
 }
 
 
+let listaTarefas: Tarefa[] = []; 
 
-let irCompras = new Tarefa (1, "Ir às compras", "Personal")
-let estudar = new Tarefa (2, "Estudar programação", "Studies")
-
-
-let listaTarefas: Tarefa[] = [irCompras, estudar]; 
 let inputTarefa = document.getElementById("addTarefa") as HTMLInputElement; 
 
+let tarefasIniciais = [
+    {id: 1, titulo: "Dormir", categoria: "Personal"},
+    {id: 2, titulo: "Ir ao jantar da Bia", categoria: "Personal"}, 
+    {id: 3, titulo: "Estudar programação", categoria: "Studies"},
+    {id: 4, titulo: "Trabalho Ética", categoria: "Work"},
+]; 
 
-renderTasks(listaTarefas); 
+
+loadInitialTasks(); 
 createBtnAddTask(); 
 getBtnSortAToZ (); 
 createSearchTask (); 
@@ -282,6 +285,18 @@ function filterCompletedTasks() {
     let listaTarefasPorFazer = listaTarefas.filter(tarefa => tarefa.concluida == false); 
 
     listaTarefas = listaTarefasPorFazer
+
+    renderTasks(listaTarefas); 
+}
+
+
+
+function loadInitialTasks() {
+
+    for (let i=0; i<tarefasIniciais.length; i++) {
+        let novaTarefaInicial = new Tarefa (tarefasIniciais[i].id, tarefasIniciais[i].titulo, tarefasIniciais[i].categoria as Categoria); 
+        listaTarefas.push(novaTarefaInicial); 
+    }
 
     renderTasks(listaTarefas); 
 }
