@@ -64,19 +64,13 @@ button {
 }
 
 .personal {
-  border: 2px solid lightblue;
-  padding: 5px;
-  border-radius: 10px;
+  color:blue; 
 }
 
 .work {
-  border: 2px solid green;
-  padding: 5px;
-  border-radius: 10px;
+  color:red; 
 }
 
 .studies {
-  border: 2px solid purple;
-  padding: 5px;
-  border-radius: 10px;
+  color: green;
 }
