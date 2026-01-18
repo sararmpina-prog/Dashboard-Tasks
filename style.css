@@ -31,13 +31,18 @@ main {
 }
 
 
-header h1 {
+ h1 {
   margin: 50px; 
   font-size: 1.4rem;
   font-weight: 600;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+}
+
+header {
+  display: flex;
+  gap: space-between; 
 }
 
 
