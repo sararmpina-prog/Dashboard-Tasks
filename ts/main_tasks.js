@@ -38,9 +38,8 @@ getBtnSortAToZ();
 createSearchTask();
 createBtnRemovedFinishedTasks();
 function createSingleTask(task) {
-    let elemLista = document.createElement("li");
-    elemLista.textContent = task.titulo;
     let spanCategory = document.createElement("span");
+    let elemLista = document.createElement("li");
     if (task.concluida == true) {
         elemLista.classList.add("riscarTarefa");
         let dataConclusao = task.marcarConcluida();
@@ -61,7 +60,8 @@ function createSingleTask(task) {
         spanCategory.textContent = "Work";
         spanCategory.classList.add("workSpan");
     }
-    elemLista.appendChild(spanCategory);
+    elemLista.textContent = task.titulo;
+    elemLista.prepend(spanCategory);
     elemLista.appendChild(createBtnRemove(task));
     elemLista.appendChild(createBtnEdit(elemLista, task));
     elemLista.appendChild(createBtnToggleCheck(task));

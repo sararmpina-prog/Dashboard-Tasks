@@ -61,11 +61,10 @@ createSearchTask ();
 createBtnRemovedFinishedTasks(); 
 
 function createSingleTask(task: Tarefa) {
-
-    let elemLista = document.createElement("li") as HTMLLIElement; 
-    elemLista.textContent = task.titulo; 
-
     let spanCategory = document.createElement("span") as HTMLSpanElement;
+    let elemLista = document.createElement("li") as HTMLLIElement; 
+    
+
 
         if (task.concluida == true) {
             elemLista.classList.add("riscarTarefa"); 
@@ -89,7 +88,8 @@ function createSingleTask(task: Tarefa) {
             spanCategory.classList.add("workSpan")
         }
 
-    elemLista.appendChild(spanCategory);     
+    elemLista.textContent = task.titulo; 
+    elemLista.prepend(spanCategory);     
     elemLista.appendChild(createBtnRemove(task)); 
     elemLista.appendChild(createBtnEdit(elemLista, task)); 
     elemLista.appendChild(createBtnToggleCheck(task)); 
