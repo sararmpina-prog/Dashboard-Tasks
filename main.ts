@@ -65,6 +65,8 @@ function createSingleTask(task: Tarefa) {
     let elemLista = document.createElement("li") as HTMLLIElement; 
     elemLista.textContent = task.titulo; 
 
+    let spanCategory = document.createElement("span") as HTMLSpanElement;
+
         if (task.concluida == true) {
             elemLista.classList.add("riscarTarefa"); 
             let dataConclusao = task.marcarConcluida(); 
@@ -73,14 +75,21 @@ function createSingleTask(task: Tarefa) {
 
         if (task.categoria == "Personal") {
             elemLista.classList.add("personal")
+            spanCategory.textContent = "Personal"; 
+            spanCategory.classList.add("personalSpan")
         }
         if (task.categoria == "Studies") {
             elemLista.classList.add("studies")
+            spanCategory.textContent = "Studies"; 
+            spanCategory.classList.add("studiesSpan")
         } 
         if (task.categoria == "Work") {
             elemLista.classList.add("work")
+            spanCategory.textContent = "Work"; 
+            spanCategory.classList.add("workSpan")
         }
 
+    elemLista.appendChild(spanCategory);     
     elemLista.appendChild(createBtnRemove(task)); 
     elemLista.appendChild(createBtnEdit(elemLista, task)); 
     elemLista.appendChild(createBtnToggleCheck(task)); 
@@ -100,6 +109,7 @@ function renderTasks(list: Tarefa[]) {
     }
 
 }
+
 
 function createBtnRemove(task: Tarefa) {
 

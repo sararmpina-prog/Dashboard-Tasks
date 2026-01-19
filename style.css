@@ -47,8 +47,8 @@ header {
 
 
 .badge {
-  background-color: #ef4444;
-  color: white;
+  background-color: wheat;
+  color: black; 
   font-size: 0.75rem;
   padding: 4px 10px;
   border-radius: 999px;
@@ -69,8 +69,8 @@ header {
 }
 
 .motorPesquisa button {
-  background-color: tomato;
-  color: white;
+  background-color: wheat;
+  color: black;
   border: none;
   padding: 0 14px;
   border-radius: 8px;
@@ -159,3 +159,33 @@ button#search {
 }
 
 
+
+.personalSpan {
+  background-color: #2563eb;
+  margin-left: 6px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.workSpan {
+  background-color: red;
+  margin-left: 6px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.studiesSpan {
+  background-color:#16a34a;
+  margin-left: 6px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
