@@ -3,8 +3,8 @@
   <head>
     <title>Task Dashboard</title>
     <link rel="icon" type="image/x-icon" href="/img/icon_formatura.webp" />
-    <script src="main.js" defer></script>
-    <link rel="stylesheet" href="style.css" />
+    <script src="/ts/main_tasks.js" defer></script>
+    <link rel="stylesheet" href="/css/style_tasks.css" />
      <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -12,8 +12,8 @@
   </head>
   <body>
     <header>
-        <a href=#> Users </a>
-        <a href=#> Tasks </a>
+        <a href="/html/index_users.html" target="_blank"> Users </a>
+        <a href="/html/index_tasks.html"> Tasks </a>
     </header>
    <main>
     <h1>TASKS DASHBOARD <span id="badge" class="badge" title="Total number of tasks" alt="Display of total number of tasks">0</span></h1>
@@ -30,7 +30,6 @@
     <section class="filterSection">
       <button id="btnRemoveCompletedTasks">Remove finished tasks</button>
       <button id="btnSort">Sort A-Z</button>
-      <button id="">Categories</button>
     </section>
 
     <div>

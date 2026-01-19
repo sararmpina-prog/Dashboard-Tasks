@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Users Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="/img/icon_formatura.webp">
+    <script src="/ts/main_users.js" defer></script>
+    <link rel="stylesheet" href="/css/style_users.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+  
+      <h1 id="titlePrincipal">USERS DASHBOARD
+        <span class="badgeAtivos" id="utilizadoresAtivos" title="Total of active users" alt="Total de utilizadores activos">0</span>
+        <span class="badgeInativos" id="utilizadoresInativos" title="Total of inactive users" alt="Total de utilizadores inactivos">0</span>
+        <span class="badge" id="utilizadoresTotais" title="Total of users" alt="Total de utilizadores totais">0</span>
+      </h1>
+
+    <section class="utilities">
+
+      <div id="estatistica">
+        <p id="activeUsersPercentage">Active users:</p>
+      </div>
+
+      <form id="formNewUser">
+        <label for="nomeUtilizador">Name: <span aria-hidden="true">*</span> </label>
+        <input id="nomeUtilizador" name="nome" type="text" required />
+
+        <label for="emailUtilizador">Email: <span id="spanMsgInfo" aria-hidden="true">*</span> </label>
+        <input id="emailUtilizador" name="email" type="email" required />
+        
+        <button id="btnGravar" type="submit">Save 🚀</button>
+      </form>
+
+      <div class="butones">
+           <button id="orderAZ">Ordenar A-Z</button>
+          <button id="btnSoAtivos">Show active users</button>
+          <button id="btnResetAllFilters">Reset all filters</button>
+      </div>
+   
+
+      <div>
+        <label
+          for="pesquisaUtilizadores"
+          type="text"
+          placeholder="Pesquise aqui"
+          aria-label="barra de pesquisa"
+        ></label>
+        <input id="pesquisaUtilizadores" />
+        <button id="pesquisar">🔍</button>
+      </div>
+
+    </section>
+
+    <section class="grid">
+
+      <div>
+        <ul id="dadosUtilizador" class="userTemplate"></ul>
+      </div>
+
+    </section>
+ </main>
+
+    <div
+      id="modalReservas"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitulo"
+    >
+      <div class="modal-content" id="modalUtilizador">
+        <button
+          id="closeModal"
+          class="botao"
+          aria-label="fechar o modal sobre o utilizador"
+        ><i class="fa-solid fa-xmark icon-cart" aria-hidden="true"></i></button>
+          
+          <h2 id="userName"></h2>
+        
+        <p id="userEmail"></p>
+        <p id="userState"></p>
+        <p id="userAdesionDate"></p>
+      </div>
+    </div>
+    
+    <footer style="background-color: bisque;">
+      <div id="debug"></div>
+     </footer>
+  </body>
+</html>

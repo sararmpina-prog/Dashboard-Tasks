@@ -292,7 +292,8 @@ let listaTasksSearched: Tarefa[] = [];
 function createBtnRemovedFinishedTasks () {
     let btnRemoveFinishedtasks = document.getElementById("btnRemoveCompletedTasks") as HTMLButtonElement;
 
-    btnRemoveFinishedtasks.addEventListener("click", () => filterCompletedTasks()); 
+    btnRemoveFinishedtasks.addEventListener("click", () =>
+       filterCompletedTasks()); 
 }
 
 function filterCompletedTasks() {

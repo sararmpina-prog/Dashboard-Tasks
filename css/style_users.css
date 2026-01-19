@@ -1,0 +1,344 @@
+
+   * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    max-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: whitesmoke;
+    line-height: 1.2;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    gap: 10px;
+    padding-bottom: 24px;
+  }
+  
+  header a {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; 
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.4rem;
+  }
+  
+  h1 #titlePrincipal {
+    margin: 200px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; 
+  }
+  
+  main {
+    background-color: #f8fafc;
+    width: min(1100px, calc(100% - 48px));
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  
+
+  .utilities {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  
+ 
+
+
+  .badge,
+  .badgeAtivos,
+  .badgeInativos {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  
+ 
+  .badge {
+    background-color: grey; 
+    color: white;
+  }
+  
+
+  .badgeAtivos {
+    background-color: grey; 
+    color: white;
+  }
+  
+  .badgeInativos {
+    background-color: grey; 
+    color: white;
+  }
+  
+
+  #estatistica {
+    display: flex;
+    justify-content: center;
+    color: #111827;
+    font-size: 0.95rem;
+  }
+  
+  
+  #formNewUser {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    padding: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 14px;
+    row-gap: 8px;
+  }
+  
+
+  #formNewUser label {
+    font-size: 0.85rem;
+    color: #111827;
+  }
+  
+  label span {
+    color: #e11d48;
+  }
+  
+
+  #formNewUser input {
+    height: 38px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid grey;
+    width: 100%;
+  }
+
+
+  #formNewUser label[for="nomeUtilizador"] {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  #formNewUser input#nomeUtilizador {
+    grid-column: 1;
+    grid-row: 2;
+  } 
+  
+  
+  #formNewUser label[for="emailUtilizador"] {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  #formNewUser input#emailUtilizador {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  
+
+  #btnGravar {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  
+    height: 38px;
+    background-color: grey; 
+    color: white;
+    border: none;
+    padding: 0 14px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+
+  .butones {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    width: 100%;
+  }
+  
+  .butones button {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background-color: wheat;
+  }
+  
+
+  .filterActive {
+    outline: 2px solid #ef4444;
+  }
+  
+
+  .utilities > div:last-child {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  input#pesquisaUtilizadores {
+    width: 80%;
+    height: 38px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid grey;
+  }
+  
+  button#pesquisar {
+    width: 10%;
+    height: 38px;
+    border-radius: 6px;
+    border: 1px solid grey;
+    background: white;
+    cursor: pointer;
+  }
+  
+
+  .grid {
+    width: 100%;
+  }
+  
+  .userTemplate {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(240px, 1fr));
+    gap: 14px;
+    width: 100%;
+    padding: 0;
+  }
+
+  .userCard {
+    background-color: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  
+  .userCard h2 {
+    font-size: 1.05rem;
+  }
+  
+  .userCard p {
+    font-size: 0.95rem;
+    color: #111827;
+  }
+  
+  .activo {
+    color: #16a34a;
+    font-weight: 600;
+  }
+  
+  .desativo {
+    color: #dc2626;
+    font-weight: 600;
+  }
+  
+
+  .userCard button {
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background-color: teal;
+    color: white;
+  }
+  
+  .userCard button + button {
+    margin-left: 6px;
+  }
+  
+
+  .modal {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .modal-content {
+    background-color: #f8fafc;
+    border-radius: 16px;
+    padding: 24px;
+    width: clamp(300px, 60%, 600px);
+    max-height: 90vh;
+    overflow-y: auto;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  
+    position: relative;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+  }
+  
+  .modal.show {
+    opacity: 1;
+    visibility: visible;
+    color: black;
+  }
+  
+  .modal.show .modal-content {
+    transform: translateY(0);
+  }
+  
+  .botao {
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    background-color: white;
+    cursor: pointer;
+    border-radius: 999px;
+  
+    width: 34px;
+    height: 34px;
+  
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+  
+ 
+  footer {
+    width: min(1100px, calc(100% - 48px));
+    border-radius: 12px;
+    margin-top: 10px;
+    padding: 10px 14px;
+    background-color: rgba(255, 228, 196, 0.6);
+    font-size: 0.85rem;
+    color: #111827;
+  }
