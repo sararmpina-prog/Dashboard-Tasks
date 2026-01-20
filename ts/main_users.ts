@@ -8,7 +8,6 @@ interface UtilizadorInterface {
 }
 
 
-
 class Utilizador implements UtilizadorInterface {
   id: number;
   nome: string;
@@ -99,7 +98,7 @@ function renderUserCard(user: Utilizador) {
 
 
 function renderUtilizadores() {
-  renderDebugData();
+  // renderDebugData();
 
   let listaDeUtilizadores = document.getElementById("dadosUtilizador" ) as HTMLUListElement;
 
@@ -238,12 +237,10 @@ function getNewUserFormData() {
 
   let inputEmail = document.getElementById("emailUtilizador") as HTMLInputElement;
  
-  let array: string[] = []; 
-
   formNewUser.addEventListener("submit", (event) =>{
     
     event.preventDefault();
-    array = createNewUser(inputNome, inputEmail);
+    createNewUser(inputNome, inputEmail);
    
   })
  
@@ -266,7 +263,7 @@ function createNewUser(nomeDoUtilizador: HTMLInputElement, emailDoUtilizador: HT
     id = id + 1; 
   } 
 
-  
+
   if (validateEmail(email)) {
       let novoUtilizador = new Utilizador(id, nome, email);
       listaUtilizadores.push(novoUtilizador);
@@ -501,18 +498,19 @@ function renderFilterBtnOrder () {
 }
 
 
-function renderDebugData() {
-    let debugDiv = document.querySelector("#debug") as HTMLDivElement;
-    let divTasks = document.createElement("div") as HTMLDivElement; 
+// Função para fazer debug footer
+// function renderDebugData() {
+//     let debugDiv = document.querySelector("#debug") as HTMLDivElement;
+//     let divTasks = document.createElement("div") as HTMLDivElement; 
 
-    debugDiv.innerHTML = "";
+//     debugDiv.innerHTML = "";
 
-    for (let i = 0; i < listaUtilizadores.length; i++) {
-        const line = document.createElement("div");
-        line.textContent = JSON.stringify(listaUtilizadores[i]);
-        debugDiv.appendChild(line);
-    }
+//     for (let i = 0; i < listaUtilizadores.length; i++) {
+//         const line = document.createElement("div");
+//         line.textContent = JSON.stringify(listaUtilizadores[i]);
+//         debugDiv.appendChild(line);
+//     }
 
-    debugDiv.appendChild(divTasks);
+//     debugDiv.appendChild(divTasks);
  
-}
+// }

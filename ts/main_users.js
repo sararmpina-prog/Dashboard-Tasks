@@ -54,7 +54,7 @@ function renderUserCard(user) {
     return elementoLista;
 }
 function renderUtilizadores() {
-    renderDebugData();
+    // renderDebugData();
     let listaDeUtilizadores = document.getElementById("dadosUtilizador");
     listaDeUtilizadores.innerHTML = "";
     let lista = listaUtilizadores;
@@ -143,10 +143,9 @@ function getNewUserFormData() {
     let formNewUser = document.getElementById("formNewUser");
     let inputNome = document.getElementById("nomeUtilizador");
     let inputEmail = document.getElementById("emailUtilizador");
-    let array = [];
     formNewUser.addEventListener("submit", (event) => {
         event.preventDefault();
-        array = createNewUser(inputNome, inputEmail);
+        createNewUser(inputNome, inputEmail);
     });
 }
 function createNewUser(nomeDoUtilizador, emailDoUtilizador) {
@@ -291,14 +290,15 @@ function renderFilterBtnOrder() {
         btnAz.classList.remove("filterActive");
     }
 }
-function renderDebugData() {
-    let debugDiv = document.querySelector("#debug");
-    let divTasks = document.createElement("div");
-    debugDiv.innerHTML = "";
-    for (let i = 0; i < listaUtilizadores.length; i++) {
-        const line = document.createElement("div");
-        line.textContent = JSON.stringify(listaUtilizadores[i]);
-        debugDiv.appendChild(line);
-    }
-    debugDiv.appendChild(divTasks);
-}
+// Função para fazer debug footer
+// function renderDebugData() {
+//     let debugDiv = document.querySelector("#debug") as HTMLDivElement;
+//     let divTasks = document.createElement("div") as HTMLDivElement; 
+//     debugDiv.innerHTML = "";
+//     for (let i = 0; i < listaUtilizadores.length; i++) {
+//         const line = document.createElement("div");
+//         line.textContent = JSON.stringify(listaUtilizadores[i]);
+//         debugDiv.appendChild(line);
+//     }
+//     debugDiv.appendChild(divTasks);
+// }

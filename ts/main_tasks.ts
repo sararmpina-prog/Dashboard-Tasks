@@ -70,7 +70,9 @@ function createSingleTask(task: Tarefa) {
             elemLista.classList.add("riscarTarefa"); 
             let dataConclusao = task.marcarConcluida(); 
             elemLista.textContent = task.titulo + " " + String(dataConclusao)
-        } 
+        } else {
+            elemLista.textContent = task.titulo; 
+        }
 
         if (task.categoria == "Personal") {
             elemLista.classList.add("personal")
@@ -88,7 +90,7 @@ function createSingleTask(task: Tarefa) {
             spanCategory.classList.add("workSpan")
         }
 
-    elemLista.textContent = task.titulo; 
+    
     elemLista.prepend(spanCategory);     
     elemLista.appendChild(createBtnRemove(task)); 
     elemLista.appendChild(createBtnEdit(elemLista, task)); 
